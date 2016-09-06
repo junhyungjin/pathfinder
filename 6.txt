@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1><a href="index.html">공릉 패스파인더</a></h1>
-    </header>
-    <nav>
-      <ol>
-        <li><a href="intro.html">소개</a></li>
-        <li><a href="member.html">멤버</a></li>
-        <li><a href="notice.html">알림판</a></li>
-        <li><a href="program.html">프로그램</a></li>
-        <li><a href="photo.html">사진</a></li>
-        <li><a href="discuss.html">의견방</a></li>
-      </ol>
-    </nav>
-    <article>
+
       <h2>
         의견 나눔방
       </h2>
@@ -57,6 +37,3 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
-    </article>
-  </body>
-</html>

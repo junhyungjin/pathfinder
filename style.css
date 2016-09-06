@@ -23,3 +23,8 @@ article {
   padding:20px;
   width: 600px;
 }
+
+header img{
+  float:right;
+  height:100px;
+}

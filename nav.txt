@@ -1,0 +1,6 @@
+<li><a href="http://localhost:8080/index.php?id=1">소개</a></li>
+<li><a href="http://localhost:8080/index.php?id=2">조직</a></li>
+<li><a href="http://localhost:8080/index.php?id=3">알림판</a></li>
+<li><a href="http://localhost:8080/index.php?id=4">프로그램</a></li>
+<li><a href="http://localhost:8080/index.php?id=5">사진</a></li>
+<li><a href="http://localhost:8080/index.php?id=6">의견방</a></li>
