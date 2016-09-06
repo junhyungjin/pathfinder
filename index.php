@@ -1,3 +1,14 @@
+<?php
+$conn = mysqli_connect("localhost","root",111111);
+mysqli_select_db($conn, 'opentutorials');
+$result = mysqli_query($conn, "SELECT * FROM topic");
+
+while($row = mysqli_fetch_assoc($result)){
+  echo $row['id'];
+  echo $row['title'];
+  echo "<br/>";
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
