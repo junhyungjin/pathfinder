@@ -2,12 +2,6 @@
 $conn = mysqli_connect("localhost","root",111111);
 mysqli_select_db($conn, 'opentutorials');
 $result = mysqli_query($conn, "SELECT * FROM topic");
-
-while($row = mysqli_fetch_assoc($result)){
-  echo $row['id'];
-  echo $row['title'];
-  echo "<br/>";
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,8 +23,10 @@ while($row = mysqli_fetch_assoc($result)){
     </nav>
     <article>
       <?php
-      if (empty($_GET['id']) == false){
+      if ( empty($_GET['id']) == false && $_GET['id'] != 6 ){
         echo file_get_contents($_GET['id'].".txt");
+      }elseif ($_GET['id'] == 6) {
+        echo file_get_contents('6.txt');
       }else {
         echo "
         <h2>
