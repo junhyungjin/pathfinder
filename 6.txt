@@ -3,14 +3,14 @@
   의견 나눔방
 </h2>
 <?php
-  if(empty($_GET['id']) === false ) {
       $sql = 'SELECT * FROM topic WHERE id='.$_GET['id'];
       $result = mysqli_query($conn, $sql);
       $row = mysqli_fetch_assoc($result);
-      echo '<h2>'.$row['title'].'</h2>';
+
+      echo $row['title'];
       echo $row['description'];
-  }
-  ?>
+?>
+
 <a href="http://localhost:8080/write.php">글쓰기</a>
 
     <!--Start of Tawk.to Script-->

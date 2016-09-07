@@ -26,7 +26,12 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
       if ( empty($_GET['id']) == false && $_GET['id'] != 6 ){
         echo file_get_contents($_GET['id'].".txt");
       }elseif ($_GET['id'] == 6) {
-        echo file_get_contents('6.txt');
+        echo "phper5";
+        while( $row = mysqli_fetch_assoc($result)){
+      echo '<li><a href="http://localhost/index.php?id='.$row['id'].'">'.$row['title'].'</a></li>'."\n";
+    }
+        echo "<br>";
+        echo "<a href=\"http://localhost:8080/write.php\">글쓰기</a>";
       }else {
         echo "
         <h2>
