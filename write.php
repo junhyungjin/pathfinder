@@ -33,6 +33,9 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
           본문: <textarea name="description"></textarea>
         </p>
         <input type="submit" name="name">
+        <?php
+        echo '<a href="http://localhost:8080/list.php">목록</a>';
+        ?>
     </article>
   </body>
 </html>

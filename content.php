@@ -26,9 +26,11 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
       $sql = "SELECT topic.id,title,name,description FROM topic LEFT JOIN user ON topic.author = user.id WHERE topic.id=".$_GET['id'];
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
-            echo $row['id'];
 
-            $num = mysql_num_rows($result);
+            $sql_count = "SELECT * FROM topic";
+            $result_count = mysqli_query($conn, $sql_count);
+
+            $num = mysqli_num_rows($result_count);
             echo $num;
 
             $next = $row['id']+1;
@@ -38,13 +40,13 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             echo '<p>'.htmlspecialchars($row['name']).'</p>';
             echo strip_tags($row['description'], '<a><h1><h2><h3><h4><h5><ul><ol><li>');
             echo '<br>';
-            echo '<a href="http://localhost:8080/list.php">목록</a>'.'<p>';
-            if( $next == $num ){
+            echo '<a href="http://localhost:8080/list.php">목록</a>'.'    ';
+            if( $row['id'] == $num ){
               echo "마지막 글 입니다";
             }else{
               echo '<a href="http://localhost:8080/content.php?id='.$next.'">다음'.'</a>'.'      ';
             }
-            if( $$row['id'] == 1 ){
+            if( $row['id'] == 1 ){
               echo "첫번째 글 입니다";
             }else{
               echo '<a href="http://localhost:8080/content.php?id='.$before.'">이전'.'</a>';
