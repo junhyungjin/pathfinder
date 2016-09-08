@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost", "root", 111111);
-mysqli_select_db($conn, "opentutorials");
+mysqli_select_db($conn, "pathfinder");
 $sql = "SELECT * FROM user WHERE name='".$_POST['author']."'";
 $result  = mysqli_query($conn, $sql);
 

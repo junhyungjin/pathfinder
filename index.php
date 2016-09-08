@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost","root",111111);
-mysqli_select_db($conn, 'opentutorials');
+mysqli_select_db($conn, 'pathfinder');
 $result = mysqli_query($conn, "SELECT * FROM topic");
 ?>
 <!DOCTYPE html>

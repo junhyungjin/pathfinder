@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost","root",111111);
-mysqli_select_db($conn, 'opentutorials');
+mysqli_select_db($conn, 'pathfinder');
 $result = mysqli_query($conn, "SELECT * FROM topic");
 ?>
 <!DOCTYPE html>
@@ -26,11 +26,29 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
       $sql = "SELECT topic.id,title,name,description FROM topic LEFT JOIN user ON topic.author = user.id WHERE topic.id=".$_GET['id'];
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
-            echo '<h2>'.$row['title'].'</h2>';
-            echo '<p>'.$row['name'].'</p>';
-            echo $row['description'];
+            echo $row['id'];
+
+            $num = mysql_num_rows($result);
+            echo $num;
+
+            $next = $row['id']+1;
+            $before = $row['id']-1;
+
+            echo '<h2>'.htmlspecialchars($row['title']).'</h2>';
+            echo '<p>'.htmlspecialchars($row['name']).'</p>';
+            echo strip_tags($row['description'], '<a><h1><h2><h3><h4><h5><ul><ol><li>');
             echo '<br>';
-            echo '<a href="http://localhost:8080/list.php">목록</a>';
+            echo '<a href="http://localhost:8080/list.php">목록</a>'.'<p>';
+            if( $next == $num ){
+              echo "마지막 글 입니다";
+            }else{
+              echo '<a href="http://localhost:8080/content.php?id='.$next.'">다음'.'</a>'.'      ';
+            }
+            if( $$row['id'] == 1 ){
+              echo "첫번째 글 입니다";
+            }else{
+              echo '<a href="http://localhost:8080/content.php?id='.$before.'">이전'.'</a>';
+            }
       ?>
       <div id="disqus_thread"></div>
       <script>

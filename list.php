@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost","root",111111);
-mysqli_select_db($conn, 'opentutorials');
+mysqli_select_db($conn, 'pathfinder');
 $result = mysqli_query($conn, "SELECT * FROM topic");
 ?>
 <!DOCTYPE html>
@@ -22,10 +22,10 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
       </ol>
     </nav>
     <article>
-      <h2>의견 나눔방</h2>
       <?php
+      echo '<h2>의견 나눔방</h2>';
       while( $row = mysqli_fetch_assoc($result)){
-      echo '<li><a href="http://localhost:8080/content.php?id='.$row['id'].'">'.$row['title'].'</a></li>'."\n";
+      echo '<li><a href="http://localhost:8080/content.php?id='.$row['id'].'">'.$row['id'].' '.$row['title'].'</a></li>'."\n";
       }
       echo '<br>';
       echo '<a href="http://localhost:8080/write.php">글쓰기</a>';
