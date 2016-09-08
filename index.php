@@ -26,11 +26,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
       if ( empty($_GET['id']) == false && $_GET['id'] != 6 && $_GET['id'] != 7){
         echo file_get_contents($_GET['id'].".txt");
       }elseif ($_GET['id'] == 6) {
-        echo '<h2>의견 나눔방</h2>';
-        include('list.php');
-      }elseif ($_GET['id'] == 7) {
-        echo '<h2>의견 나눔방</h2>';
-        include('content.php');
+        header('Location: http://localhost:8080/list.php');
       }else {
         echo "
         <h2>
