@@ -22,7 +22,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
       </ol>
     </nav>
     <article>
-      <h2>의견 나눔방3</h2>
+      <h2>의견 나눔방</h2>
       <?php
       while( $row = mysqli_fetch_assoc($result)){
       echo '<li><a href="http://localhost:8080/content.php?id='.$row['id'].'">'.$row['title'].'</a></li>'."\n";
