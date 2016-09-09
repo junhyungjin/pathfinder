@@ -1,6 +1,8 @@
 <?php
-$conn = mysqli_connect("localhost","root",111111);
-mysqli_select_db($conn, 'pathfinder');
+require("config/config.php");
+require("lib/db.php");
+$conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
+
 $result = mysqli_query($conn, "SELECT * FROM topic");
 ?>
 <!DOCTYPE html>
@@ -29,9 +31,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
 
             $sql_count = "SELECT * FROM topic";
             $result_count = mysqli_query($conn, $sql_count);
-
             $num = mysqli_num_rows($result_count);
-            echo $num;
 
             $next = $row['id']+1;
             $before = $row['id']-1;
@@ -39,7 +39,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             echo '<h2>'.htmlspecialchars($row['title']).'</h2>';
             echo '<p>'.htmlspecialchars($row['name']).'</p>';
             echo strip_tags($row['description'], '<a><h1><h2><h3><h4><h5><ul><ol><li>');
-            echo '<br>';
+            echo '<br><br>';
             echo '<a href="http://localhost:8080/list.php">목록</a>'.'    ';
             if( $row['id'] == $num ){
               echo "마지막 글 입니다";
@@ -51,6 +51,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             }else{
               echo '<a href="http://localhost:8080/content.php?id='.$before.'">이전'.'</a>';
             }
+            echo '<a href="http://localhost:8080/delete.php?id='.$row['id'].'">삭제'.'</a>'.'      ';
       ?>
       <div id="disqus_thread"></div>
       <script>

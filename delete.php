@@ -1,9 +1,13 @@
 <?php
 require("config/config.php");
 require("lib/db.php");
-
 $conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
-$result = mysqli_query($conn, "SELECT * FROM topic");
+
+$sql = "SELECT * FROM topic";
+$sql_del = "DELETE FROM topic WHERE id=".$_GET['id'];
+
+$result_del = mysqli_query($conn, $sql_del);
+$result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,20 +28,14 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
       </ol>
     </nav>
     <article>
-      <form action="process.php" method="post">
-        <p>
-          제목: <input type="text" name="title">
-        </p>
-        <p>
-          작성자: <input type="text" name="author">
-        </p>
-        <p>
-          본문: <textarea name="description"></textarea>
-        </p>
-        <input type="submit" name="name">
-        <?php
-        echo '<a href="http://localhost:8080/list.php">목록</a>';
-        ?>
+      <?php
+      echo '<h2>의견 나눔방</h2>';
+      while( $row = mysqli_fetch_assoc($result)){
+      echo '<li><a href="http://localhost:8080/content.php?id='.$row['id'].'">'.$row['id'].' '.$row['title'].'</a></li>'."\n";
+      }
+      echo '<br>';
+      echo '<a href="http://localhost:8080/write.php">글쓰기</a>';
+      ?>
     </article>
   </body>
 </html>
