@@ -28,3 +28,7 @@ header img{
   float:right;
   height:100px;
 }
+
+.container {
+  padding-top:20px;
+}

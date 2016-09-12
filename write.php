@@ -32,15 +32,18 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
       <div class="col-md-9">
         <article>
           <form action="process.php" method="post">
-            <p>
-              제목: <input type="text" name="title">
-            </p>
-            <p>
-              작성자: <input type="text" name="author">
-            </p>
-            <p>
-              본문: <textarea name="description"></textarea>
-            </p>
+            <div class="form-group">
+              <label for="form-title">제목</label>
+              <input type="text" class="form-control" name="title" id="form-title" placeholder="제목을 적어주세요">
+            </div>
+            <div class="form-group">
+              <label for="form-author">작성자</label>
+              <input type="text" class="form-control" name="author" id="form-author" placeholder="작성자를 적어주세요">
+            </div>
+            <div class="form-group">
+              <label for="form-author">본문</label>
+              <textarea class="form-control" rows="10" name="description" placeholder="본문을 적어 주세요"></textarea>
+            </div>
             <hr>
             <input type="submit" name="name" class="btn btn-success">
             <?php
