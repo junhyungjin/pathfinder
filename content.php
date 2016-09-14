@@ -46,17 +46,18 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             echo '<h2>'.htmlspecialchars($row['title']).'</h2>';
             echo '<p>'.htmlspecialchars($row['name']).'</p>';
             echo strip_tags($row['description'], '<a><h1><h2><h3><h4><h5><ul><ol><li>');
-            echo '<br><br>';
-            echo '<a href="http://localhost:8080/list.php" class="btn btn-default">목록</a>'.'    ';
+            echo '<br>';
+            echo '<hr>';
+            echo '<a href="http://localhost:8080/list.php" class="btn btn-default">목록</a>'.'      ';
             if( $row['id'] == $num ){
-              echo "마지막 글 입니다";
+              echo "";
             }else{
               echo '<a href="http://localhost:8080/content.php?id='.$next.'" class="btn btn-default">다음'.'</a>'.'      ';
             }
             if( $row['id'] == 1 ){
-              echo "첫번째 글 입니다";
+              echo "";
             }else{
-              echo '<a href="http://localhost:8080/content.php?id='.$before.'" class="btn btn-default">이전'.'</a>';
+              echo '<a href="http://localhost:8080/content.php?id='.$before.'" class="btn btn-default">이전'.'</a>'.'      ';
             }
             echo '<a href="http://localhost:8080/delete.php?id='.$row['id'].'" class="btn btn-danger">삭제'.'</a>'.'      ';
       ?>
@@ -87,6 +88,6 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>
