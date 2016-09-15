@@ -3,7 +3,7 @@ require("config/config.php");
 require("lib/db.php");
 $conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
 
-$result = mysqli_query($conn, "SELECT * FROM topic order by id desc");
+$result = mysqli_query($conn, "SELECT topic.b_no,b_title,name,b_created FROM topic LEFT JOIN user ON topic.b_author = user.id order by b_no desc");
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,19 +46,19 @@ $result = mysqli_query($conn, "SELECT * FROM topic order by id desc");
             <tbody>
               <?php
               while( $row = $result->fetch_assoc()){
-                $datetime = explode(' ', $row['created']);
+                $datetime = explode(' ', $row['b_created']);
       					$date = $datetime[0];
       					$time = $datetime[1];
       					if($date == Date('Y-m-d'))
-      						$row['created'] = $time;
+      						$row['b_created'] = $time;
       					else
-      						$row['created'] = $date;
+      						$row['b_created'] = $date;
               ?>
               <tr>
-                <td class="no"><?php echo $row['id']?></td>
-                <td class="title"><?php echo '<a href="http://localhost:8080/content.php?id='.$row['id'].'">'.$row['title'].'</a>'?></td>
+                <td class="no"><?php echo $row['b_no']?></td>
+                <td class="title"><?php echo '<a href="http://localhost:8080/content.php?id='.$row['b_no'].'">'.$row['b_title'].'</a>'?></td>
                 <td class="author"><?php echo $row['name']?></td>
-                <td class="date"><?php echo $row['created']?></td>
+                <td class="date"><?php echo $row['b_created']?></td>
               </tr>
               <?php
               }

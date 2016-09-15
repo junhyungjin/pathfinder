@@ -32,7 +32,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
       <div class="col-md-9">
     <article>
       <?php
-      $sql = "SELECT topic.id,title,name,description FROM topic LEFT JOIN user ON topic.author = user.id WHERE topic.id=".$_GET['id'];
+      $sql = "SELECT topic.b_no,b_title,name,b_content, b_created FROM topic LEFT JOIN user ON topic.b_author = user.id WHERE topic.b_no=".$_GET['id'];
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
 
@@ -40,26 +40,26 @@ $result = mysqli_query($conn, "SELECT * FROM topic");
             $result_count = mysqli_query($conn, $sql_count);
             $num = mysqli_num_rows($result_count);
 
-            $next = $row['id']+1;
-            $before = $row['id']-1;
+            $next = $row['b_no']+1;
+            $before = $row['b_no']-1;
 
-            echo '<h2>'.htmlspecialchars($row['title']).'</h2>';
-            echo '<p>'.htmlspecialchars($row['name']).'</p>';
-            echo strip_tags($row['description'], '<a><h1><h2><h3><h4><h5><ul><ol><li>');
+            echo '<h2>'.htmlspecialchars($row['b_title']).'</h2>';
+            echo '<p>'.htmlspecialchars($row['name']).'     '.htmlspecialchars($row['b_created']).'</p>';
+            echo strip_tags($row['b_content'], '<a><h1><h2><h3><h4><h5><ul><ol><li>');
             echo '<br>';
             echo '<hr>';
             echo '<a href="http://localhost:8080/list.php" class="btn btn-default">목록</a>'.'      ';
-            if( $row['id'] == $num ){
+            if( $row['b_no'] == $num ){
               echo "";
             }else{
               echo '<a href="http://localhost:8080/content.php?id='.$next.'" class="btn btn-default">다음'.'</a>'.'      ';
             }
-            if( $row['id'] == 1 ){
+            if( $row['b_no'] == 1 ){
               echo "";
             }else{
               echo '<a href="http://localhost:8080/content.php?id='.$before.'" class="btn btn-default">이전'.'</a>'.'      ';
             }
-            echo '<a href="http://localhost:8080/delete.php?id='.$row['id'].'" class="btn btn-danger">삭제'.'</a>'.'      ';
+            echo '<a href="http://localhost:8080/delete.php?id='.$row['b_no'].'" class="btn btn-danger">삭제'.'</a>'.'      ';
       ?>
       <div id="disqus_thread"></div>
       <script>
